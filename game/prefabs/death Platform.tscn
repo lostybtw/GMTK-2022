@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2900.5, 153.5 )
+
+[node name="death Platform" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1697.5, 1132 )
+scale = Vector2( 2, 1 )
+shape = SubResource( 1 )

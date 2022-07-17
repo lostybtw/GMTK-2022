@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/character.png" type="Texture" id=1]
 [ext_resource path="res://scripts/movement.gd" type="Script" id=2]
+[ext_resource path="res://assets/GMTK-2022.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/walk.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/hop.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/death.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48.5, 100 )
@@ -27,6 +31,11 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -9, 61 )
 current = true
+zoom = Vector2( 1.5, 1.5 )
+drag_margin_left = 0.6
+drag_margin_top = 0.4
+drag_margin_right = 0.5
+drag_margin_bottom = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -46, 208 )
@@ -41,5 +50,18 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Death = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="hop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

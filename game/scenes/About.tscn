@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/level selector.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=12]
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0, 0.112, 0.984 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.54902, 0.54902, 1, 0.141176, 0.0392157, 0.0392157, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.478431, 0.478431, 0.611765 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.529412, 0.529412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.529412, 0.529412, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0.529412, 0.529412, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0.529412, 0.529412, 0.129412 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -1085, 142 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2( 1090, 521 )
+scale = Vector2( 1086, 559.25 )
+mesh = SubResource( 12 )
+texture = SubResource( 13 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -70.0
+margin_right = 70.0
+margin_bottom = 20.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/default_color = Color( 0.192157, 0.698039, 0.917647, 1 )
+text = "About The Developer"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -417.0
+margin_top = -227.0
+margin_right = -17.0
+margin_bottom = 73.0
+rect_scale = Vector2( 2.5, 2.5 )
+custom_colors/default_color = Color( 0.192157, 0.698039, 0.917647, 1 )
+text = "Hello World, This Game Was Made For The GMTK Game Jam 2022 in 48 Hours.
+
+You Can Call Me Losty, I am a 13 year old in India trying to spread the word about Free And Open Source Software and Entertainment that Is Free As In Freedom. This Game's Source Code Is Liscensed Under The GNU GPL 3.0. https://github.com/lostybtw/GMTK-2022/
+
+I love The Free Software Movement And have been making games since 2019, This Is My First Gmtk Game Jam Entry So I hope You Guys Treat It well.
+
+GNU/Linux Is My Operating System Of Choice Following The Tenents Of Freedom And Open Sourcing. 
+
+Footnote : I use Arch Btw
+"
+
+[node name="Back To Menu" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 78.0
+margin_top = -95.0
+margin_right = 283.0
+margin_bottom = -81.0
+rect_scale = Vector2( 2, 2 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Back To Menu"
+
+[connection signal="pressed" from="Back To Menu" to="." method="_on_Back_To_Menu_pressed"]

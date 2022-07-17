@@ -6,7 +6,7 @@ func _on_Play_pressed():
 
 
 func _on_About_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/About.tscn")
 
 
 func _on_Quit_pressed():

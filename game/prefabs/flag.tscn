@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/flag.gd" type="Script" id=1]
+[ext_resource path="res://assets/flag.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 38, 106.75 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "flag_down"
+length = 1.1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flag:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="flag" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="Flag" type="Sprite" parent="."]
+position = Vector2( 2666, 431 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 2683, 123, 2693, 207, 2696, 281, 2821, 279, 2824, 574, 2682, 573, 2679, 595, 2703, 600, 2703, 632, 2718, 632, 2719, 603, 2735, 602, 2738, 624, 2747, 620, 2747, 602, 2763, 601, 2769, 626, 2768, 626, 2780, 596, 2792, 603, 2792, 621, 2811, 623, 2811, 599, 2818, 604, 2824, 599, 2829, 634, 2844, 632, 2841, 599, 2852, 599, 2849, 574, 2839, 571, 2841, 281, 2838, 123 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 2394, 537 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 164, -40 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/flag_down = SubResource( 5 )
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -6,8 +6,11 @@ func _on_Level1_pressed():
 
 
 func _on_Level2_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/Stage2.tscn")
 
 
 func _on_Level3_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://scenes/Stage3.tscn")
+
+func _on_Back_To_Menu_pressed():
+	get_tree().change_scene("res://scenes/main_menu.tscn")

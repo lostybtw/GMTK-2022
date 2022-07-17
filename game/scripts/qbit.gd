@@ -14,16 +14,34 @@ signal state_is_3
 
 var qbit = []
 var stop_time = null
+var spins = 2
 
 func _on_Spin_Button_pressed():
+	$AudioStreamPlayer.play(1.35)
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	var stop_state = state_names[random.randi_range(0,3)]
-	var stop_time = stop_state
-	$AnimationPlayer.play("roll_dice")
+	if stop_state == 3:
+		$AnimationPlayer.play("roll_dice_3") 
+	elif stop_state == 2:
+		$AnimationPlayer.play("roll_dice_2")
+	elif stop_state == 1:
+		$AnimationPlayer.play("roll_dice_1")
+	elif stop_state == 0:
+		$AnimationPlayer.play("roll_dice_0")
 	qbit = states[stop_state]
 	print(qbit)
 	print(stop_state)
-	if $AnimationPlayer.is_playing() == false : $Sprite.frame = stop_state
+	if stop_state == 0:
+		emit_signal("state_is_0")
+	elif stop_state == 1:
+		emit_signal("state_is_1")
+	elif stop_state == 2:
+		emit_signal("state_is_2")
+	elif stop_state == 3:
+		emit_signal("state_is_3")
+	spins -= 1
 
-
+func _physics_process(_delta):
+	if spins == 0:
+		$Roll_Button.visible = false

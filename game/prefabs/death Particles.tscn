@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="death Particles" type="Particles2D"]
+position = Vector2( 1469, 469 )
+scale = Vector2( 10, 10 )
+emitting = false
+one_shot = true
+process_material = SubResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
